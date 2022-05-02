@@ -1,19 +1,19 @@
 SELECT
-	--scopes.scopeType AS 'scopes-localIndex',
-	--cloudCache.localScopeIndex AS 'cloudCache- localScopeIndex',
-	--scopes.cloudIndex AS 'scopes- cloudIndex',
-	--cloudCache.scopeIndex AS 'cloudCache- scopeIndex',
-	--downloadQueue.scopeIndex AS 'downloadQueue-scopeIndex',
-	--scopes.stableIndex AS 'scopes- stableIndex',
-	--idMapping.stableScopeIndex AS 'idMapping- stableScopeIndex',
-	--statusCenter.scopeIndex AS 'statusCenter- scope Index',
-	--remappedDeletes.scopeIndex AS 'remappedDeletes- scope Index',
-	DateTime( scopes.creationDate + 978307200, 'UNIXEPOCH' ) AS 'scopes-creationDate',
-	scopes.scopeIdentifier AS 'scopes-scopeIdentifier = Photos.sqlite_zShare-ScopeID',
-	DateTime( scopes.initialSyncDate + 978307200, 'UNIXEPOCH' ) AS 'scopes- initialSyncDate',
-	cloudCache.class AS 'cloudCache-class',
-	statusCenter.class AS 'statusCenter- class',
-	cloudCache.serializedRecord AS 'cloudCache- serializedRecord',
+--scopes.scopeType AS 'scopes-localIndex',
+--cloudCache.localScopeIndex AS 'cloudCache- localScopeIndex',
+--scopes.cloudIndex AS 'scopes- cloudIndex',
+--cloudCache.scopeIndex AS 'cloudCache- scopeIndex',
+--downloadQueue.scopeIndex AS 'downloadQueue-scopeIndex',
+--scopes.stableIndex AS 'scopes- stableIndex',
+--idMapping.stableScopeIndex AS 'idMapping- stableScopeIndex',
+--statusCenter.scopeIndex AS 'statusCenter- scope Index',
+--remappedDeletes.scopeIndex AS 'remappedDeletes- scope Index',
+DateTime( scopes.creationDate + 978307200, 'UNIXEPOCH' ) AS 'scopes-creationDate',
+scopes.scopeIdentifier AS 'scopes-scopeIdentifier = Photos.sqlite_zShare-ScopeID',
+DateTime( scopes.initialSyncDate + 978307200, 'UNIXEPOCH' ) AS 'scopes- initialSyncDate',
+cloudCache.class AS 'cloudCache-class',
+statusCenter.class AS 'statusCenter- class',
+cloudCache.serializedRecord AS 'cloudCache- serializedRecord',
 CASE
 		idMapping.addDirection 
 		WHEN 1 THEN
@@ -22,27 +22,27 @@ CASE
 		'iCloudPhotos2Devcie-2' ELSE idMapping.addDirection 
 	END AS 'idMapping-addDirection',
 CASE
-		downloadQueue.resourceType
-		WHEN 5 THEN 
-		'iCloud Photos-5' ELSE downloadQueue.resourceType
+		downloadQueue.resourceType 
+		WHEN 5 THEN
+		'iCloud Photos-5' ELSE downloadQueue.resourceType 
 	END AS 'downloadQueue-resourceType',
 CASE
-		downloadQueue.status
-		WHEN 2 THEN 
-		'Synced with Device-2' ELSE downloadQueue.status
-	END AS 'downloadQueue-status',	
+		downloadQueue.status 
+		WHEN 2 THEN
+		'Synced with Device-2' ELSE downloadQueue.status 
+	END AS 'downloadQueue-status',
 CASE
 		idMapping.mappingState 
 		WHEN 1 THEN
 		'Successful-1' 
 		WHEN 2 THEN
-		'Unknown-2' ELSE idMapping.mappingState
+		'Unknown-2' ELSE idMapping.mappingState 
 	END AS 'idMapping-mappingState',
 CASE
-		downloadQueue.intent
+		downloadQueue.intent 
 		WHEN 1 THEN
-		'Completed-1' ELSE downloadQueue.intent
-	END AS 'downloadQueue-intent',		
+		'Completed-1' ELSE downloadQueue.intent 
+	END AS 'downloadQueue-intent',
 	downloadQueue.position AS 'downloadQueue-position',
 	downloadQueue.taskIdentifier AS 'downloadQueue-taskIdentifier',
 	downloadQueue.retryCount AS 'downloadQueue-retryCount',
@@ -127,7 +127,7 @@ CASE
 	pushRepository.uploadIdentifier AS 'pushRepository- upload Identifier',
 	pushRepository.trustLevel AS 'pushRepository- trust Level',
 	pushRepository.serializedRecord AS 'pushRepository- serialized Record',
-	statusCenter.generation AS 'statusCenter- generation'		
+	statusCenter.generation AS 'statusCenter- generation' 
 FROM
 	idMapping
 	LEFT JOIN scopes ON scopes.stableIndex = idMapping.stableScopeIndex
@@ -135,6 +135,6 @@ FROM
 	LEFT JOIN pushRepository ON pushRepository.identifier = cloudCache.identifier
 	LEFT JOIN downloadQueue ON downloadQueue.itemIdentifier = cloudCache.identifier
 	LEFT JOIN statusCenter ON statusCenter.identifier = idMapping.cloudIdentifier
-	LEFT JOIN remappedDeletes ON remappedDeletes.cloudIdentifier = idMapping.cloudIdentifier
+	LEFT JOIN remappedDeletes ON remappedDeletes.cloudIdentifier = idMapping.cloudIdentifier 
 ORDER BY
 	idMapping.addTimestamp
