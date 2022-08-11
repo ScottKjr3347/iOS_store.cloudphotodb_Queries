@@ -19,24 +19,24 @@ CASE
 		WHEN 1 THEN
 		'Device2iCloudPhotos-1' 
 		WHEN 2 THEN
-		'iCloudPhotos2Devcie-2' ELSE idMapping.addDirection 
+		'iCloudPhotos2Devcie-2' ELSE 'Unknown-New-Value!: '||idMapping.addDirection||'' 
 	END AS 'idMapping-addDirection',
 CASE
 		downloadQueue.resourceType
 		WHEN 5 THEN 
-		'iCloud Photos-5' ELSE downloadQueue.resourceType
+		'iCloud Photos-5' ELSE 'Unknown-New-Value!: '||downloadQueue.resourceType||''
 	END AS 'downloadQueue-resourceType',
 CASE
 		downloadQueue.status
 		WHEN 2 THEN 
-		'Synced with Device-2' ELSE downloadQueue.status
+		'Synced with Device-2' ELSE 'Unknown-New-Value!: '||downloadQueue.status||''
 	END AS 'downloadQueue-status',	
 CASE
 		idMapping.mappingState 
 		WHEN 1 THEN
 		'Successful-1' 
 		WHEN 2 THEN
-		'Unknown-2' ELSE idMapping.mappingState
+		'2-StillTesting-2' ELSE 'Unknown-New-Value!: '||idMapping.mappingState||''
 	END AS 'idMapping-mappingState',
 	downloadQueue.position AS 'downloadQueue-position',
 	downloadQueue.taskIdentifier AS 'downloadQueue-taskIdentifier',
@@ -47,12 +47,12 @@ CASE
 		WHEN 1 THEN
 		'Yes-1' 
 		WHEN 2 THEN
-		'Unknown-2' ELSE cloudCache.confirmed 
+		'StillTesting-2' ELSE 'Unknown-New-Value!: '||cloudCache.confirmed||'' 
 	END AS 'cloudCache-confirmed',
 CASE
 		cloudCache.state 
 		WHEN 1 THEN
-		'Active-1' ELSE cloudCache.state 
+		'Active-1' ELSE 'Unknown-New-Value!: '||cloudCache.state||'' 
 	END AS 'cloudCache-state',
 	DateTime( scopes.disabledDate + 978307200, 'UNIXEPOCH' ) AS 'scopes-disabledDate',
 	DateTime( scopes.deleteDate + 978307200, 'UNIXEPOCH' ) AS 'scopes-deleteDate = zShare-ExpiryDate',
@@ -63,7 +63,7 @@ CASE
 		WHEN 1 THEN
 		'Deleted via Recently Deleted via Device Photos App-1' 
 		WHEN 2 THEN
-		'unknown-2' ELSE idMapping.deleteDirection 
+		'StillTesting-2' ELSE 'Unknown-New-Value!: '||idMapping.deleteDirection||'' 
 	END AS 'idMapping-deleteDirection',
 	cloudCache.identifier AS 'cloudCache- identifier = Photos.sqlite-AssetUUID-CldMstGUID',
 	idMapping.cloudIdentifier AS 'idMapping- cloudIdentifier = Photos.sqlite-AssetUUID-CldMstGUID',
@@ -91,7 +91,7 @@ CASE
 CASE
 		scopes.hasFetchedInitialSyncAnchor 
 		WHEN 1 THEN
-		'Yes-1' ELSE scopes.hasFetchedInitialSyncAnchor 
+		'Yes-1' ELSE 'Unknown-New-Value!: '||scopes.hasFetchedInitialSyncAnchor||'' 
 	END AS 'scopes- has Fetched initial Sync Anchor',
 	scopes.initialSyncAnchor AS 'scopes-initial Sync Anchor',
 	scopes.syncAnchor AS 'scopes- syncAnchor',
