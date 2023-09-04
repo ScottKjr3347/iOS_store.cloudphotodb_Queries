@@ -9,4 +9,6 @@ store.cloudphotodb - globals table contains data about the library
 
 iOS##_store-cloudphotodb_Main_Query - idMapping, scopes, cloudCache, downloadQueue, statusCenter, remappedDeletes tables are included in this query.
 
-iOS##_store-cloudphotodb_pushRepo-OutgoingRes-Res_Query - pushRepository, outgoingResources, and resources tables are included in this query. This query can be used to identify original file names, file names, and other unique identifiers. Recommend reviewing the pushRepository.serializedRecord bplist for specific data.
+iOS##_store-cloudphotodb_pushRepository_Query - pushRepository table is included in this query. This query can be used to identify original file names, file names, and other unique identifiers. Recommend reviewing the pushRepository.serializedRecord bplist for specific data.
+
+iOS##_store-cloudphotodb_outgoingResourceANDResources_Query - outgoingResources and Resoureces tables are included in this query. This query will provide information about files being synced with iCloud. This will contain unique identifiers and other data that can be used to match up with files listed in other tables in store.cloudphotodb.
